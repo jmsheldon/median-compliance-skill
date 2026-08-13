@@ -236,7 +236,7 @@ Every domestic and foreign business corporation and LLC registered in New York f
 ### New York general business corporation franchise tax (Form CT-3) (NY) `ny-ct3`
 Applies to: c-corp, benefit-corp
 A corporation doing business in New York files a franchise tax return and owes at least a fixed dollar minimum tax, which is based on New York receipts rather than on profit. A loss-making company still owes the minimum.
-- **Deadline**: Three and a half months after year end, so April 15 for a calendar year filer. Form CT-5 extends it.
+- **Deadline**: Three and a half months after year end, so April 15 for a calendar year filer. Form CT-5 extends it by six months.
 - **Cost**: A fixed dollar minimum applies even at a loss. The amount depends on the New York receipts bracket, so check the current table on the linked page rather than assuming a figure.
 - **Innocent explanations to rule out first**:
   - A CT-5 extension was filed, so the return is not late yet. (common) Check: Look for the accepted extension and work from the extended date.

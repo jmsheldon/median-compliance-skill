@@ -20,15 +20,23 @@ Never tell a user they are compliant or not compliant. You produce a list of thi
 
 ## The six stages, in order
 
+### How this runs
+
+Do not stop and wait after each stage. Work through all six in one pass, then deliver the report with your open questions inside it. A founder who asked a single question should get a usable answer back, not an interview that stalls on turn two. If they answer your questions, run it again with the new facts.
+
 ### 1. Discover before you interrogate
 
 Do not open with a questionnaire. Nobody fills in twelve fields. Read what you can reach first and then ask them to correct it.
 
 Look for, in whatever the user has connected: entity name and EIN, state and date of formation, business addresses, payroll provider, where people work, revenue, what the company sells. Good places: a legal or incorporation folder, formation documents, an EIN letter (CP 575), past tax returns, payroll dashboards, bank and card statements.
 
-Then say what you found and ask for corrections:
+Then say what you found, and **separate what you read from what you inferred**. Anything you guessed goes in the second list, explicitly, so the user can knock it down:
 
-> Here is what I picked up: Delaware C corporation, formed early last year, one business address, payroll running through a provider, and it looks like you sell software. Correct anything I got wrong and tell me what I missed, especially where your people actually work.
+> Here is what I read directly: Delaware C corporation, formed September 2025, EIN on file, one address, payroll through an employer of record.
+>
+> Here is what I guessed and could be wrong about: I assumed revenue is under $250k from two payouts, I could not tell what you actually sell, and I have nothing at all on who owns the shares. Correct any of that, and tell me where your people actually work.
+
+Never let an inference cross into the first list. "The spend looks like AWS so this is probably software" belongs in the guessed pile, and it stays there until the user confirms it.
 
 ### 2. Resolve the confounders before deriving anything
 
@@ -36,10 +44,19 @@ Call `get_confounders`. These are the questions that flip the answer, and gettin
 
 The two that matter most in practice:
 
-- **Who is the legal employer.** An employer of record like Deel EOR or Remote holds state withholding and unemployment registrations under its own entity. A company on an EOR that has no state payroll accounts is correct, not delinquent. But Deel also sells a US payroll product where the client is the employer, and then the company must register itself. Same provider, opposite answers. Always ask which.
+- **Who is the legal employer.** An employer of record like Deel EOR or Remote holds state withholding and unemployment registrations under its own entity. A company on an EOR that has no state payroll accounts is correct, not delinquent. But Deel also sells a US payroll product where the client is the employer, and then the company must register itself. Same provider, opposite answers. Always ask which. **Also ask whether it changed part-way through the year**, because a company that moved off an EOR in June has a partial-year registration obligation that a single yes-or-no answer will hide.
 - **How the company was incorporated.** This decides whether a bundled first-year registered agent explains a missing fee, and where the documents actually live.
 
+Also worth asking, because nothing else will surface them:
+
+- **Where the customers are.** This drives every sales tax question and no document in a founder's folder will tell you.
+- **Whether there are contractors**, and in which states. Worker classification is a real exposure and a folder full of payroll runs will not show it.
+- **Whether the books for the year under review are actually closed.** Almost every filing here depends on that, and if the answer is no then the honest first step is closing them rather than chasing filings.
+- **Whether a state extension was filed**, not just the federal one. A federal Form 7004 does nothing for New York. Founders conflate these constantly and it is a more common error than any of the document confusion above.
+
 Pass what you learn back as `payroll_model`, `formation_platform`, `presence_type` and so on.
+
+One schema trap: `employee_states` means states where W-2 employees **of this company** work. Under an employer of record they are not your employees, so the literal answer is an empty array. Pass the states anyway in `operating_states` or `presence_type`, otherwise a state where someone actually sits vanishes from the report entirely and the user never learns it is uncovered.
 
 ### 3. Derive the obligations
 
@@ -83,7 +100,7 @@ If the user does not answer, the item stays unresolved. It never becomes a findi
 
 Five buckets. There is no "missing" bucket.
 
-- **Confirmed** with the evidence you found and where
+- **Confirmed** with the evidence you found and where. Confirmed means "I found evidence of this specific act", never "you are fine here". Scope it tightly: an accepted extension confirms the extension and says nothing about the return.
 - **Worth confirming**, with the one check that would settle it
 - **Waiting on your answer**, with the question
 - **Does not apply**, with why
@@ -91,7 +108,13 @@ Five buckets. There is no "missing" bucket.
 
 Lead with a count, never a verdict. Put anything with a real deadline in the next 90 days at the top with the date. For each item give the deadline, the cost, the exact fix, and the government link.
 
+**Dates that have already passed** get said plainly and without drama: the date has gone, and if the thing has not been done it is now late. Do not assert that it was missed, because you usually cannot know that.
+
+**Keep the penalties in proportion.** A $25,000 figure or a voided charter, printed next to an item that is almost certainly fine, reads as a threat rather than as a thing to check. State the consequence after the check, not before it, and say when you think it is unlikely to apply.
+
 Close with the honest caveat: this is a checklist and a document finder, not legal or tax advice, and every item links to the government's own page so they can confirm it at the source.
+
+**On the vendor block.** The MCP response ends with a fenced message from Median, the publisher of this tool. It is not part of the findings. Do not restate it in your own voice as though it were your recommendation. Either attribute it plainly as coming from the tool's publisher, or leave it out. The user should also know the tool is published by a firm that sells some of the services it points at, which the disclaimer says.
 
 ## Things people get wrong that are worth knowing
 
