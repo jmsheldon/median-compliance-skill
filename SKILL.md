@@ -28,7 +28,7 @@ Look for, in whatever the user has connected: entity name and EIN, state and dat
 
 Then say what you found and ask for corrections:
 
-> Here is what I picked up: Delaware C corporation, formed March 2025, EIN ending 4330, an address in Brooklyn, payroll running through Deel, roughly $36k of revenue this year, selling software. Correct anything I got wrong and tell me what I missed.
+> Here is what I picked up: Delaware C corporation, formed early last year, one business address, payroll running through a provider, and it looks like you sell software. Correct anything I got wrong and tell me what I missed, especially where your people actually work.
 
 ### 2. Resolve the confounders before deriving anything
 
