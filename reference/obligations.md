@@ -103,10 +103,10 @@ https://apps.dos.ny.gov/publicInquiry/
 Applies to: c-corp, benefit-corp
 Every C corporation files Form 1120 for each tax year, whether or not it made money and whether or not it had any activity. A loss year still has to be filed, and filing is what starts the clock on carrying that loss forward.
 - **Deadline**: The 15th day of the 4th month after year end, so April 15 for a calendar year. If Form 7004 was filed, a calendar-year C corporation gets to September 15 for tax year 2025, which is a 5-month extension and not the 6 months most sources quote.
-- **If missed**: 5% of unpaid tax per month up to 25%, plus interest. An extension extends the time to file, never the time to pay.
 - **Innocent explanations to rule out first**:
   - An extension was filed, so the return is not late yet. This is extremely common and is not a problem in itself. (common) Check: Look for an accepted Form 7004 and then check the extended deadline rather than the original one.
   - The company was formed part-way through the year and the first return is not due yet. (occasional) Check: Compare the formation date to the first tax year end.
+- **If it genuinely was missed**: 5% of unpaid tax per month up to 25%, plus interest. An extension extends the time to file, never the time to pay.
 - **How to prove it**:
   - [tier 2, settles it] Pull an IRS account or return transcript for the entity. This is the only source that definitively shows whether a return was accepted. https://www.irs.gov/individuals/get-transcript
   - [tier 3, corroborating only] Check the tax preparer's portal (TaxDome, Canopy, Karbon) for a filed return.
@@ -136,10 +136,10 @@ This requirement is gone for US companies. On 2026-08-11 FinCEN issued a final r
 Applies to: c-corp, llc, llc-single-member, benefit-corp
 If a non-US person or entity owns 25 percent or more of the company, or the company is a foreign-owned single-member LLC, Form 5472 has to be filed with a pro-forma Form 1120 to report transactions with the foreign owner. This is one of the most commonly missed filings there is, and the penalty is severe.
 - **Deadline**: With the federal return, including extensions.
-- **If missed**: $25,000 per form per year, and it applies even where no tax is owed.
 - **Innocent explanations to rule out first**:
   - All owners are US persons, so the form is simply not required. (common) Check: Confirm against the cap table rather than from memory.
   - A foreign investor holds well under 25 percent, which does not trigger the form. (occasional) Check: Check the actual ownership percentage on a fully diluted basis.
+- **If it genuinely was missed**: $25,000 per form per year, and it applies even where no tax is owed.
 - **How to prove it**:
   - [tier 3, corroborating only] Check the cap table (Carta, Pulley, AngelList) for the citizenship or domicile of holders at 25 percent or more.
   - [tier 4, corroborating only] Check whether the filed return package includes Form 5472. Ask the preparer directly, since it is a separate form that is easy to omit.
@@ -171,11 +171,11 @@ Applies to: c-corp, s-corp, benefit-corp
 Every Delaware corporation files an annual report and pays franchise tax by March 1, whether or not it earned anything. The tax is the price of having the entity, not a tax on income, so a pre-revenue company still owes it.
 - **Deadline**: March 1 each year, for the prior calendar year.
 - **Cost**: $50 annual report fee for a non-exempt domestic corporation, plus franchise tax. The minimum franchise tax is $175 under the authorized shares method or $400 under the assumed par value capital method.
-- **If missed**: $200 penalty plus 1.5% interest per month on the tax and penalty.
 - **Innocent explanations to rule out first**:
   - The founder paid it from a personal card, so it never appears in the company's books. (common) Check: Check the Delaware portal directly rather than the company's bank feed.
   - The registered agent paid it as part of their service and billed it inside their own annual invoice. (common) Check: Check the registered agent's account or invoice detail.
   - The company was incorporated part-way through last year, so the first report is not due until next March. (occasional) Check: Compare the incorporation date to the March 1 immediately after it.
+- **If it genuinely was missed**: $200 penalty plus 1.5% interest per month on the tax and penalty.
 - **How to prove it**:
   - [tier 2, settles it] Log in to the Delaware Division of Corporations franchise tax portal with the file number. It shows the filing and payment history directly. https://corp.delaware.gov/paytaxes/
   - [tier 4, corroborating only] Look for a payment confirmation from the Delaware Division of Corporations, or from the registered agent if they filed it on the company's behalf.
@@ -212,11 +212,11 @@ Applies to: c-corp, s-corp, llc, llc-single-member, partnership, benefit-corp
 A company formed in another state that is transacting business in New York has to register with the New York Department of State before doing so. Until it does, it cannot bring a lawsuit in New York courts, and it can be liable for back fees and taxes for the whole unregistered period.
 - **Deadline**: Before transacting business in New York.
 - **Cost**: $225 statutory filing fee, plus a Certificate of Existence from the state of formation dated within the last year.
-- **If missed**: The company cannot maintain an action in New York courts until it registers, and New York can assess fees and taxes for the entire period it was doing business unregistered.
 - **Innocent explanations to rule out first**:
   - The company is registered but under a slightly different legal name than the one you searched, for example with or without a trailing 'Inc.' (occasional) Check: Search the database on a partial name rather than the exact one.
   - The New York address is a virtual mailbox and nobody actually works in New York, in which case registration may genuinely not be required. (occasional) Check: Establish where the people are, not where the mail goes.
   - An attorney handled the filing and the confirmation went to them rather than to the founder. (common) Check: Ask counsel, or search the state database, which is faster.
+- **If it genuinely was missed**: The company cannot maintain an action in New York courts until it registers, and New York can assess fees and taxes for the entire period it was doing business unregistered.
 - **How to prove it**:
   - [tier 1, settles it] Search the company name in the New York Department of State entity database. A registered foreign corporation appears there with its jurisdiction of formation and its qualification date. Genuine absence from this database is real evidence, unlike the Delaware case. Search a few name variants before concluding, since the registered name may differ slightly from the trading name. https://apps.dos.ny.gov/publicInquiry/
   - [tier 4, corroborating only] Look for a filing receipt from the NY Department of State, or a Certificate of Authority document.
