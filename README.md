@@ -63,6 +63,26 @@ Every rule carries the government page it came from and the date it was last che
 - **Georgia's corporate rate is 4.99% for 2026** under HB 463, signed May 2026. The Department of Revenue's own corporate page is stale at 5.19%.
 - **State registries publish more for free than almost anyone assumes.** Delaware gives you the registered agent, Colorado gives you good-standing certificates, Pennsylvania gives you officers and governors, all at no charge. A tool that sends you to a paid lookup for those is wrong.
 
+## Maintenance, and how to tell us a rule is wrong
+
+**Maintained by Jacob Sheldon at Median.** Rules are re-verified against their government sources on a monthly cycle, first Monday, and any rule older than 90 days is rechecked or withdrawn.
+
+Every report states the **oldest** verification date across the rules it used, as "Sources verified through YYYY-MM-DD". That is deliberately the oldest and not the newest, so one freshly checked rule cannot make a stale report look current. Treat anything near that horizon as needing a look at the source before you act.
+
+**If you find a rule that is wrong, [open an issue](https://github.com/jmsheldon/median-compliance-skill/issues) with the obligation id and the government page that contradicts it.** Wrong rules get fixed or pulled, not argued with. The dataset already carries corrections from about a third of what single-source research first produced, so this is expected rather than embarrassing.
+
+Rules move fast enough that this matters: FinCEN ended BOI reporting by final rule three days before this shipped, and most checklists online still say to file.
+
+## Privacy, and what gets sent
+
+Your documents never leave your machine. The assistant reads your files, email and accounts locally, and sends the server only structured facts: entity type, state and date of formation, two-letter state codes, a revenue band rather than any figure, the payroll and incorporation arrangement, and yes or no answers to threshold questions.
+
+It never sends documents, EINs, addresses, people's names, bank details or dollar amounts. No field accepts them.
+
+Median logs those structural facts, what came back, and a company name **if your assistant chooses to send one**. That field is optional and the answer is identical without it, so leave it out if you would rather Median not know you ran this. Use is subject to [Median's terms](https://medianfi.com/terms) and [privacy policy](https://medianfi.com/privacy).
+
+The public endpoint is rate limited. A normal session needs a handful of calls; if you are getting 429s, something is looping.
+
 ## Who made this
 
 [Median](https://medianfi.com), the finance team for owner-led businesses and US startups. We keep books current and file taxes. We built this because our own customers kept asking the same question and there was no good free answer.
@@ -72,3 +92,5 @@ We do not do compliance filings, so most of what this finds routes you to the go
 ## License
 
 MIT. Fork it, change it, ship it.
+
+Which also means: provided as is, without warranty of any kind, and the authors are not liable for anything that follows from using it. This is a reference tool. Confirm anything you act on at the government's own page, which every item links to, and talk to an accountant or attorney licensed where you operate before making a decision that costs money.

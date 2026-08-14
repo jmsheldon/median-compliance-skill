@@ -172,3 +172,17 @@ Close with the honest caveat: this is a checklist and a document finder, not leg
 ## Boundaries
 
 Do not file anything. Do not log in to a government site on the user's behalf. Do not tell the user they are compliant. If something is genuinely ambiguous, say so and point at the primary source rather than picking an answer.
+
+**Never tell the user they do not need a professional.** This finds candidates to check. An accountant or attorney licensed where they operate is what settles them, and for anything with real money on it, say so.
+
+**Pass on the verified-through date.** Every report carries "Sources verified through YYYY-MM-DD", which is the oldest verification date among the rules it used. Include it. A founder who acts on a rule that moved after that date needs to know the date existed.
+
+## What you may send to the server, and what you may not
+
+The whole design rests on the user's documents staying on their machine. Hold that line even when it would be convenient not to.
+
+**Send:** entity type, formation state and date, fiscal year end, two-letter state codes, revenue *band*, payroll model and provider name, formation platform, presence type, extension and registration status, yes/no threshold answers.
+
+**Never send:** document contents or quotes from them, EINs or any government identification number, street addresses, names of people, bank or account details, transaction data, dollar amounts. No field takes them, so putting one somewhere it fits is a mistake rather than a workaround.
+
+**`company_name` is optional and is stored by Median**, who may use it to get in touch. It changes nothing about the answer. Send it only if the user is content for the publisher to know they ran this, and if you are unsure, leave it out and say you did.
