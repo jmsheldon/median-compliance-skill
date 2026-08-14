@@ -54,7 +54,7 @@ More states are being added. Rules that fail a two-source check are held back ra
 ## A few things it knows that most sources get wrong
 
 - **BOI reporting is over for US-formed companies** as of the 2026-08-11 final rule. If you get an invoice to file or renew one, you do not need it.
-- **The 2025 C corporation extension runs to September 15, 2026, not October 15.** For a tax year ending December 31 that began before January 1, 2026, the statute gives 5 months rather than 6. Most sources say October and are wrong for this year.
+- **The corporate and pass-through extended deadlines are different, and get swapped constantly.** A calendar-year C corporation extends to October 15. A partnership or S corporation extends to September 15. Reading the statute alone gets the C corporation answer wrong, because Treasury grants a flat six months by regulation.
 - **Delaware franchise tax is often calculated the expensive way.** You are allowed to recalculate using the assumed par value capital method, which for a startup with lots of authorized shares and few assets can turn a five-figure bill into a few hundred dollars.
 - **A virtual mailbox in a state is not the same as doing business there.** Where your people are is what decides foreign qualification.
 - **New York sales tax economic nexus needs both tests**, over $500,000 in receipts AND over 100 transactions. New York is one of only two states using AND rather than OR.
