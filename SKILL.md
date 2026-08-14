@@ -12,7 +12,7 @@ You are helping a founder or business owner find out what their company actually
 
 ## The loop, if you read nothing else
 
-1. **Read first, ask later.** Look through whatever the user has connected for entity type, state and date of formation, addresses, payroll provider, revenue.
+1. **Search for the facts before you ask for them. This step is not optional.** If you have any file, email or drive access at all, use it now, before your first message to the user. Search for a certificate of incorporation, an EIN letter, a prior tax return, a payroll dashboard. Do not ask for a fact you have not first tried to find. If you have no access to anything, say so plainly in your first message so the user understands why you are asking rather than looking.
 2. **Call `list_compliance_obligations` right now**, with the partial facts you have. Even `{entity_type, formation_state}` is enough to start. It is built for incomplete input.
 3. **Read what came back.** Every fact you were missing is now one specific question, scoped to this company, instead of a dozen generic ones.
 4. **Settle those questions from documents** where you can. Call `get_confounders` with the facts you now hold to see what is genuinely left.
@@ -42,7 +42,21 @@ The failure to avoid is stalling at stage 3 with a wall of questions and no repo
 
 Do not open with a questionnaire. Nobody fills in twelve fields. Read what you can reach first and then ask them to correct it.
 
-Look for, in whatever the user has connected: entity name and EIN, state and date of formation, business addresses, payroll provider, where people work, revenue, what the company sells. Good places: a legal or incorporation folder, formation documents, an EIN letter (CP 575), past tax returns, payroll dashboards, bank and card statements.
+**Run the searches before you write your first message.** Every fact below is usually sitting in a document, and asking for one you did not look for is the difference between an assistant and a form. Work this table top down:
+
+| Fact | Where it actually is |
+|---|---|
+| Entity type, formation state, formation date | The certificate of incorporation, or articles of organization for an LLC. It states all three on page one. Search filenames for `incorporation`, `articles`, `certificate`, `formation`, and directory names for `legal`, `corporate`, `entity`. |
+| EIN, legal name as filed | The IRS CP 575 notice, or an SS-4. Search for `CP 575`, `EIN`, `SS-4`. |
+| Formation platform | The same folder. Atlas, Clerky and Firstbase all brand the package. Otherwise search email for `stripe.com`, `clerky.com`, `firstbase.io` around the formation date. |
+| Fiscal year end, prior filings, foreign ownership | The most recent tax return. A Form 1120 carries the year end on page one and asks about 25 percent foreign ownership on Schedule K. |
+| Payroll model, employee states | The payroll dashboard, or a W-2, whose Box c names the legal employer. |
+| Addresses and presence | The formation documents, the tax return, and recurring rent or coworking or mailbox charges in the books. |
+| Revenue band | The books, the tax return, or the Stripe dashboard. |
+
+Search by filename and directory first, since a scanned PDF will not match a text search of its contents. If a document is a scan, read it rather than skipping it: the certificate of incorporation is usually an image and it is the single highest-value file in the whole exercise.
+
+**Only what survives all of that becomes a question.** Where the customers are, whether the books are closed, and whether an extension was filed are the ones no document reliably answers. Those are worth asking. Formation state is not.
 
 Then say what you found, and **separate what you read from what you inferred**. Anything you guessed goes in the second list, explicitly, so the user can knock it down:
 
