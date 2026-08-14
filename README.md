@@ -45,11 +45,11 @@ It also will not tell you something is missing just because it could not find a 
 
 ## Coverage
 
-Verified today: **US federal, Delaware, New York.** Entity types: C corporation, S corporation, LLC, single-member LLC (including foreign-owned), partnership, benefit corporation.
+**156 obligations across 13 jurisdictions**: US federal plus California, Colorado, Delaware, Florida, Georgia, Illinois, Massachusetts, New Jersey, New York, Pennsylvania, Texas and Washington. Entity types: C corporation, S corporation, LLC, single-member LLC (including foreign-owned), partnership, benefit corporation and nonprofit. Categories: entity filings, registered agents, income and franchise tax, payroll, unemployment, workers compensation, sales tax and information returns.
 
-Every other state is reported as not covered yet, with a link to that state's Secretary of State and tax authority. That is deliberate. An invented rule is worse than an honest gap.
+Every other state is reported as not covered, with a link to that state's Secretary of State and tax authority. That is deliberate. An invented rule is worse than an honest gap.
 
-More states are being added. Rules that fail a two-source check are held back rather than shipped.
+Every rule carries the government page it came from and the date it was last checked. Where a fee or deadline could not be confirmed at the source, the obligation still appears but the number is withheld rather than guessed.
 
 ## A few things it knows that most sources get wrong
 
@@ -58,6 +58,10 @@ More states are being added. Rules that fail a two-source check are held back ra
 - **Delaware franchise tax is often calculated the expensive way.** You are allowed to recalculate using the assumed par value capital method, which for a startup with lots of authorized shares and few assets can turn a five-figure bill into a few hundred dollars.
 - **A virtual mailbox in a state is not the same as doing business there.** Where your people are is what decides foreign qualification.
 - **New York sales tax economic nexus needs both tests**, over $500,000 in receipts AND over 100 transactions. New York is one of only two states using AND rather than OR.
+- **New Jersey's Corporate Transit Fee is a cliff, not a band.** Once taxable net income crosses $10 million the 2.5% applies to the entire amount, not the excess, so $10.1 million owes roughly $252,000 rather than $2,500.
+- **New Jersey still has the 200-transaction sales tax prong.** Several sites claim it was repealed in 2024. It was not, and the repeal bills introduced in January 2026 are not enacted.
+- **Georgia's corporate rate is 4.99% for 2026** under HB 463, signed May 2026. The Department of Revenue's own corporate page is stale at 5.19%.
+- **State registries publish more for free than almost anyone assumes.** Delaware gives you the registered agent, Colorado gives you good-standing certificates, Pennsylvania gives you officers and governors, all at no charge. A tool that sends you to a paid lookup for those is wrong.
 
 ## Who made this
 

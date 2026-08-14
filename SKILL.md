@@ -62,7 +62,9 @@ One schema trap: `employee_states` means states where W-2 employees **of this co
 
 Call `list_compliance_obligations` with everything you have confirmed. Pass `payroll_model: "unknown"` rather than guessing. The server will return `depends_on` and a question, which is the correct outcome.
 
-Read the coverage section. Today the server has verified rules for US federal, Delaware and New York only. For any other state it returns a `not_covered` block with the state's own links. Present that as a limit of this tool, never as an all clear.
+Read the coverage section. The server currently has rules for US federal plus CA, CO, DE, FL, GA, IL, MA, NJ, NY, PA, TX and WA. For any other state it returns a `not_covered` block with that state's own links. Present that as a limit of this tool, never as an all clear.
+
+Some rows carry a `needs-review` flag, meaning the obligation is real but a fee or deadline could not be confirmed at the source. Those arrive with their specifics withheld rather than guessed. Pass that on as it is written; do not fill the gap from your own knowledge.
 
 ### 4. Hunt for evidence, strongest source first
 
