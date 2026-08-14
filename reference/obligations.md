@@ -2,7 +2,7 @@
 
 Generated from the same data the MCP server uses. This exists so the skill still works if the server is unreachable. Prefer the server, which is kept current.
 
-Generated: 2026-08-13. Rules: 11. Coverage: US federal, Delaware, New York.
+Generated: 2026-08-14. Rules: 11. Coverage: US federal, Delaware, New York.
 
 
 ## Questions that change the answer
@@ -63,6 +63,19 @@ Several obligations simply have not come due yet for a young company. A first an
 - **More than a year ago**: Recurring obligations should have at least one cycle of evidence behind them.
 - **Not sure**: Ask, since it changes whether anything is actually late.
 
+### Was an extension filed for the tax year under review, federal and state separately?
+The deadline moves by five or six months on this answer, so assuming either way is dangerous in both directions. Assume an extension and a late filer is told they have months in hand while penalties accrue. Assume none and a founder who did everything right is told they are overdue. It also has to be asked per jurisdiction: a federal Form 7004 does nothing for a state return, and conflating the two is one of the most common founder errors there is.
+- **Federal extension filed, state not confirmed**: The federal return runs to the extended date. The state return is still on its original deadline until a separate state extension is confirmed.
+- **Both federal and state extensions filed**: Both returns run to their extended dates.
+- **No extension was filed**: Both returns were due on their original dates and are late if not filed. Interest runs from the original date either way.
+- **Not sure**: No deadline is asserted at all. Check for an accepted extension confirmation before working to any date, and be careful: an accepted extension confirmation and an accepted return confirmation look nearly identical.
+
+### Is the company already registered to do business in each state where it operates?
+Several obligations only begin once a company is registered in a state. A biennial statement, for instance, is not owed by a company that has never qualified there, so treating it as outstanding for an unregistered company is simply wrong. This is a separate question from whether registration is required.
+- **Yes, registered**: The recurring obligations that follow registration are now live.
+- **Not registered**: Post-registration obligations are not owed yet. The live question is whether registration is required at all.
+- **Not sure**: Search the state's public entity database. For New York this settles it outright, since foreign corporations appear there with their jurisdiction of formation.
+
 ### Does any non-US person or non-US entity own part of the company?
 A 25 percent or greater foreign owner of a US disregarded entity or corporation triggers Form 5472, which carries a $25,000 penalty and is one of the most commonly missed filings there is. It also determines whether the company still has any BOI reporting obligation at all.
 - **Yes, there is a non-US owner**: Check Form 5472 exposure and, for foreign-formed entities, remaining BOI obligations.
@@ -89,7 +102,7 @@ https://apps.dos.ny.gov/publicInquiry/
 ### Federal corporate income tax return (Form 1120) (US) `federal-1120`
 Applies to: c-corp, benefit-corp
 Every C corporation files Form 1120 for each tax year, whether or not it made money and whether or not it had any activity. A loss year still has to be filed, and filing is what starts the clock on carrying that loss forward.
-- **Deadline**: The 15th day of the 4th month after year end (April 15 for a calendar year). Form 7004 extends it.
+- **Deadline**: The 15th day of the 4th month after year end, so April 15 for a calendar year. If Form 7004 was filed, a calendar-year C corporation gets to September 15 for tax year 2025, which is a 5-month extension and not the 6 months most sources quote.
 - **If missed**: 5% of unpaid tax per month up to 25%, plus interest. An extension extends the time to file, never the time to pay.
 - **Innocent explanations to rule out first**:
   - An extension was filed, so the return is not late yet. This is extremely common and is not a problem in itself. (common) Check: Look for an accepted Form 7004 and then check the extended deadline rather than the original one.
@@ -236,7 +249,7 @@ Every domestic and foreign business corporation and LLC registered in New York f
 ### New York general business corporation franchise tax (Form CT-3) (NY) `ny-ct3`
 Applies to: c-corp, benefit-corp
 A corporation doing business in New York files a franchise tax return and owes at least a fixed dollar minimum tax, which is based on New York receipts rather than on profit. A loss-making company still owes the minimum.
-- **Deadline**: Three and a half months after year end, so April 15 for a calendar year filer. Form CT-5 extends it by six months.
+- **Deadline**: Three and a half months after year end, so April 15 for a calendar year filer. Form CT-5 extends it by six months, to roughly October 15. A federal Form 7004 does nothing for New York: the state extension is a separate filing and founders conflate the two constantly.
 - **Cost**: A fixed dollar minimum applies even at a loss. The amount depends on the New York receipts bracket, so check the current table on the linked page rather than assuming a figure.
 - **Innocent explanations to rule out first**:
   - A CT-5 extension was filed, so the return is not late yet. (common) Check: Look for the accepted extension and work from the extended date.
