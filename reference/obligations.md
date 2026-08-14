@@ -1085,11 +1085,13 @@ A company formed in another state that is transacting business in New York has t
   - [tier 4, corroborating only] Look for a filing receipt from the NY Department of State, or a Certificate of Authority document.
 - **Fix**:
   1. Search the New York Department of State entity database first, since it settles the question in about a minute and costs nothing.
-  2. If registration is genuinely needed, order a Certificate of Existence from Delaware. It has to be dated within the last year, and Delaware charges $50 for it.
-  3. File the Application for Authority with the NY Department of State and pay the $225 fee.
-  4. Expect the biennial statement and New York franchise tax obligations to begin once registered.
-- **Source**: https://dos.ny.gov/application-authority-foreign-business-corporation (verified 2026-08-13)
-- **Note**: Filing governed by NY Business Corporation Law section 1304.
+  2. If registration is genuinely needed, order a Certificate of Existence from the state of formation. It has to be dated within the last year, and Delaware charges $50 for it.
+  3. If the company has already been transacting business in New York, obtain the consent of the New York State Tax Commission and attach it to the application. Section 1304(a)(8) lets you either certify that the company has not yet engaged in any activity in New York or attach that consent, and a company that has been operating there cannot truthfully make the first certification. This is the step that makes qualifying late slower than qualifying up front, because the Tax Department expects the New York returns for the unregistered period to be brought current before it consents.
+  4. File the Application for Authority with the NY Department of State and pay the $225 fee. Filing is by mail to the Division of Corporations in Albany.
+  5. Do not buy a New York registered agent service on the assumption that one is required. Designating the Secretary of State as agent for service of process is mandatory and is a field on the form itself. A separate registered agent is optional.
+  6. Expect the biennial statement and New York franchise tax obligations to begin once registered.
+- **Source**: https://dos.ny.gov/application-authority-foreign-business-corporation (verified 2026-08-14)
+- **Note**: Filing governed by NY Business Corporation Law section 1304. Three subsections matter and are commonly missed. Section 1304(a)(6) makes designation of the Secretary of State as agent for service of process mandatory. Section 1304(a)(7) makes a separate registered agent optional, phrased 'if it is to have a registered agent', so a company qualifying in New York does not need to pay for one. Section 1304(a)(8) requires either a statement that the corporation has not engaged in any activity in this state since incorporation, or 'the consent of the state tax commission to the filing of the application, which consent shall be attached thereto'. The Department of State page states the same rule: if the foreign corporation has been conducting business in New York State prior to filing its Application for Authority, it must obtain the consent of the New York State Tax Commission. A company that has been operating in New York unregistered therefore has a tax step in front of the filing step, which is usually the real reason a late qualification is not a same-day job.
 
 ### New York biennial statement `ny-biennial-statement`
 Applies to: c-corp, s-corp, llc, llc-single-member, benefit-corp | category: entity

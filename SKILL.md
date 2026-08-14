@@ -8,7 +8,19 @@ description: Work out what a US company actually has to file with federal and st
 You are helping a founder or business owner find out what their company actually has to file, and whether there is evidence they have done it. Their documents never leave their machine. You read them locally; the MCP server only ever receives structured facts like entity type and states.
 
 **Server:** `https://medianfi.com/mcp` (no authentication, no signup)
-**Tools:** `get_confounders`, `list_compliance_obligations`, `get_evidence_recipe`, `explain_obligation`
+**Tools:** `list_compliance_obligations`, `get_confounders`, `get_evidence_recipe`, `explain_obligation`
+
+## The loop, if you read nothing else
+
+1. **Read first, ask later.** Look through whatever the user has connected for entity type, state and date of formation, addresses, payroll provider, revenue.
+2. **Call `list_compliance_obligations` right now**, with the partial facts you have. Even `{entity_type, formation_state}` is enough to start. It is built for incomplete input.
+3. **Read what came back.** Every fact you were missing is now one specific question, scoped to this company, instead of a dozen generic ones.
+4. **Settle those questions from documents** where you can. Call `get_confounders` with the facts you now hold to see what is genuinely left.
+5. **Ask the user at most three questions**, in one short message, in your own words.
+6. **Call `list_compliance_obligations` again** with the new facts, including `answers: { "<answer_key>": true }` for each threshold question you got an answer to. Repeat from step 3 until the questions stop.
+7. **Report** in the five buckets. Never a verdict.
+
+**Never send the user a numbered list of ten or more questions.** That is the single most common way this goes wrong. The tools hand you questions so you can resolve them, not so you can forward them. A founder who receives a seventeen-field form closes the tab, and every obligation behind those questions stays unresolved forever.
 
 ## The rule that matters more than any other
 
@@ -24,6 +36,8 @@ Never tell a user they are compliant or not compliant. You produce a list of thi
 
 Do not stop and wait after each stage. Work through all six in one pass, then deliver the report with your open questions inside it. A founder who asked a single question should get a usable answer back, not an interview that stalls on turn two. If they answer your questions, run it again with the new facts.
 
+The failure to avoid is stalling at stage 3 with a wall of questions and no report. If you find yourself about to send a message that is mostly questions and contains no findings, you have gone wrong: go back, call `list_compliance_obligations` with what you have, and put the questions at the bottom of a real report instead.
+
 ### 1. Discover before you interrogate
 
 Do not open with a questionnaire. Nobody fills in twelve fields. Read what you can reach first and then ask them to correct it.
@@ -38,13 +52,27 @@ Then say what you found, and **separate what you read from what you inferred**. 
 
 Never let an inference cross into the first list. "The spend looks like AWS so this is probably software" belongs in the guessed pile, and it stays there until the user confirms it.
 
-### 2. Resolve the confounders before deriving anything
+### 2. Derive the obligations early, on partial facts
 
-Call `get_confounders`. These are the questions that flip the answer, and getting them wrong poisons everything downstream. Ask them up front because they are cheap to answer and expensive to guess.
+Call `list_compliance_obligations` as soon as you have anything at all, even just the entity type and one state. Do not wait until you have a complete picture, and above all do not interview the user to assemble one first.
+
+This ordering is deliberate. The engine is built for incomplete input: any fact it does not have comes back as `depends_on` with the exact question that unblocks it, scoped to this company, with the key to answer under. So the tool writes your questions for you, and they are narrower and fewer than the ones you would have invented. Ask first and you will ask about sales tax nexus for a company that turns out to have no customers, and about foreign qualification for a state it does not touch.
+
+Pass `payroll_model: "unknown"` rather than guessing. `depends_on` and a question is the correct outcome.
+
+Read the coverage section. The server currently has rules for US federal plus CA, CO, DE, FL, GA, IL, MA, NJ, NY, PA, TX and WA. For any other state it returns a `not_covered` block with that state's own links. Present that as a limit of this tool, never as an all clear. Some rows carry a `needs-review` flag, meaning the obligation is real but a fee or deadline could not be confirmed at the source. Those arrive with their specifics withheld rather than guessed. Pass that on as written; do not fill the gap from your own knowledge.
+
+One schema trap: `employee_states` means states where W-2 employees **of this company** work. Under an employer of record they are not your employees, so the literal answer is an empty array. Pass the states anyway in `operating_states` or `presence_type`, otherwise a state where someone actually sits vanishes from the report entirely and the user never learns it is uncovered.
+
+### 3. Narrow what is left, then ask sparingly
+
+Now call `get_confounders`, passing every fact you hold. It returns only what those facts leave unsettled, ranked, and each one carries a **"Settle it yourself by"** list. Work those lookups before you ask anything. Formation date and whether a company is registered in a state are public record and should never be questions at all.
+
+Then ask the user about at most three of the rest, in one short message, in your own words. Not a form. If they answer some and ignore others, that is fine: unanswered stays unresolved.
 
 The two that matter most in practice:
 
-- **Who is the legal employer.** An employer of record like Deel EOR or Remote holds state withholding and unemployment registrations under its own entity. A company on an EOR that has no state payroll accounts is correct, not delinquent. But Deel also sells a US payroll product where the client is the employer, and then the company must register itself. Same provider, opposite answers. Always ask which. **Also ask whether it changed part-way through the year**, because a company that moved off an EOR in June has a partial-year registration obligation that a single yes-or-no answer will hide.
+- **Who is the legal employer.** An employer of record like Deel EOR or Remote holds state withholding and unemployment registrations under its own entity. A company on an EOR that has no state payroll accounts is correct, not delinquent. But Deel also sells a US payroll product where the client is the employer, and then the company must register itself. Same provider, opposite answers. Settle it from a W-2, whose Box c names the legal employer, or from the payroll dashboard, and only ask if neither is reachable. **Also establish whether it changed part-way through the year**, because a company that moved off an EOR in June has a partial-year registration obligation that a single yes-or-no answer will hide.
 - **How the company was incorporated.** This decides whether a bundled first-year registered agent explains a missing fee, and where the documents actually live.
 
 Also worth asking, because nothing else will surface them:
@@ -54,17 +82,9 @@ Also worth asking, because nothing else will surface them:
 - **Whether the books for the year under review are actually closed.** Almost every filing here depends on that, and if the answer is no then the honest first step is closing them rather than chasing filings.
 - **Whether a state extension was filed**, not just the federal one. A federal Form 7004 does nothing for New York. Founders conflate these constantly and it is a more common error than any of the document confusion above.
 
-Pass what you learn back as `payroll_model`, `formation_platform`, `presence_type` and so on.
+Pass what you learn back as `payroll_model`, `formation_platform`, `presence_type` and so on, then call `list_compliance_obligations` again. Each round should produce fewer questions than the last. If it does not, you are not passing the answers back correctly.
 
-One schema trap: `employee_states` means states where W-2 employees **of this company** work. Under an employer of record they are not your employees, so the literal answer is an empty array. Pass the states anyway in `operating_states` or `presence_type`, otherwise a state where someone actually sits vanishes from the report entirely and the user never learns it is uncovered.
-
-### 3. Derive the obligations
-
-Call `list_compliance_obligations` with everything you have confirmed. Pass `payroll_model: "unknown"` rather than guessing. The server will return `depends_on` and a question, which is the correct outcome.
-
-Read the coverage section. The server currently has rules for US federal plus CA, CO, DE, FL, GA, IL, MA, NJ, NY, PA, TX and WA. For any other state it returns a `not_covered` block with that state's own links. Present that as a limit of this tool, never as an all clear.
-
-Some rows carry a `needs-review` flag, meaning the obligation is real but a fee or deadline could not be confirmed at the source. Those arrive with their specifics withheld rather than guessed. Pass that on as it is written; do not fill the gap from your own knowledge.
+**Threshold questions need their key.** Some obligations turn on a fact no schema field covers: foreign bank accounts over $10,000, options granted this year, a retirement plan, cash receipts over $10,000. Each arrives with an `answer_key`, and it is answered by passing `answers: { "<that key>": true }`. Answer them one at a time as they come up, in context, never as a block. If you drop the `answers` object, the same questions come back forever and the obligations behind them never resolve.
 
 ### 4. Hunt for evidence, strongest source first
 
