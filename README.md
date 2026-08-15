@@ -12,21 +12,23 @@ That is the problem in one example. The rules move, and anything with the rules 
 
 ## Install
 
-Add the server. No signup, no API key, no account.
+Two pieces. The server carries the rules and is the part that matters. The skill teaches your assistant how to search your own documents for evidence, and is optional.
 
-```
-https://medianfi.com/mcp
-```
+**The server** is `https://medianfi.com/mcp`. No signup, no API key, no account.
 
-In Claude, add it as a custom connector. In ChatGPT, add it as a connector. Then install this skill:
+| Where you are | How to add it | Skill |
+|---|---|---|
+| Claude desktop or claude.ai | Settings > Connectors > Add custom connector, paste the URL, Add | Download this repo as a ZIP and upload it under Customize > Skills |
+| Claude Code | `claude mcp add --transport http --scope user median https://medianfi.com/mcp` | `npx skills add https://github.com/jmsheldon/median-compliance-skill` |
+| ChatGPT | Settings > Connectors > Add | Not supported, the server alone still works |
 
-```bash
-npx skills add https://github.com/jmsheldon/median-compliance-skill
-```
+**Add the server before you start the session you plan to use it in.** A connector added mid-session does not appear until the client reloads, and an assistant that cannot reach the rules will answer from its own training data instead, which is the failure this whole project exists to prevent. If the `claude` command is not on your PATH you are on the desktop app: use its settings UI, and do not hand-edit `~/.claude.json`.
 
-Then just ask:
+Then ask, naming the company:
 
-> Check whether my company is up to date on its filings.
+> Check whether Acme Robotics Inc is up to date on its filings.
+
+Name it even if it is the only company you own. Your assistant can see every entity whose paperwork has ever passed through your machine, and naming one keeps the answer about that one.
 
 ## What it does
 
