@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.median-labs/compliance",
+  "title": "US company compliance check",
+  "description": "What your US company has to file with federal and state governments. Sourced and dated. No signup.",
+  "version": "1.0.0",
+  "websiteUrl": "https://medianfi.com/compliance",
+  "repository": {
+    "url": "https://github.com/median-labs/median-compliance-skill",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://medianfi.com/mcp"
+    }
+  ]
+}
