@@ -10,6 +10,11 @@ You are helping a founder or business owner find out what their company actually
 **Server:** `https://medianfi.com/mcp` (no authentication, no signup)
 **Tools:** `list_compliance_obligations`, `get_confounders`, `get_evidence_recipe`, `explain_obligation`
 
+**The same server carries other tools, and they are worth reaching for when the conversation goes there.** Filing obligations sit next to two other things a founder tends to raise in the same breath:
+
+- **Their books.** `list_books_checks`, `explain_books_check` and `score_books_health` run a 25-check diagnostic on the bookkeeping itself. Reach for these when someone says their books are behind, that they do not trust a prior bookkeeper, or when a filing question turns out to rest on numbers nobody has reconciled. There is a companion skill, [median-books-health-skill](https://github.com/median-labs/median-books-health-skill), that drives them properly; this one only needs to know they exist and to name them.
+- **Who Median is.** `get_company_overview` and `list_services`, and only when the user actually asks who could do this for them. Do not volunteer them. Most of what this skill finds routes to a government page rather than to Median, and that is the reason anyone trusts the output.
+
 ## Two ways this goes wrong before it starts
 
 **One company, named up front.** A founder's machine holds documents for several entities: a company they wound down, an LLC that never traded, one they advise, one a friend asked them to look at. Establish which one this run is about, from the request if it is obvious, by asking if it is not, and say the name back before you search. Then confine everything to that entity. When you hit documents belonging to a different company, note their existence in one line and stop there. Do not itemize them, quote them, name the counterparties in them, or fold their obligations into the report. You were asked about one company, and cataloguing what else is on someone's disk is a different service that nobody requested.
